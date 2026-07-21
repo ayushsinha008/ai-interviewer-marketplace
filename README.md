@@ -43,6 +43,40 @@ Made with ❤️ by **Ayush** · [@ayushsinha008](https://github.com/ayushsinha0
 
 ### Architecture (at a glance)
 
+```mermaid
+flowchart TB
+  subgraph Client
+    UI[Next.js App Router + React UI]
+  end
+
+  subgraph Auth_Security["Auth & Security"]
+    Clerk[Clerk Auth]
+    Arcjet[Arcjet]
+    MW[proxy.js middleware]
+  end
+
+  subgraph Server
+    Actions[Server Actions]
+  end
+
+  subgraph Data_Services["Data & Services"]
+    Prisma[Prisma]
+    PG[(PostgreSQL)]
+    Stream[Stream Video / Chat]
+    Gemini[Google Gemini]
+    Resend[Resend Email]
+  end
+
+  UI --> MW
+  MW --> Clerk
+  MW --> Arcjet
+  UI --> Actions
+  Actions --> Prisma --> PG
+  Actions --> Stream
+  Actions --> Gemini
+  Actions --> Resend
+```
+
 ```text
 Browser (Next.js App Router)
     │
