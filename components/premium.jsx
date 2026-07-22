@@ -43,7 +43,7 @@ export function CursorSpotlight() {
       aria-hidden
       className="pointer-events-none fixed inset-0 z-30 hidden lg:block"
       style={{
-        background: `radial-gradient(600px circle at var(--cx) var(--cy), rgba(251,191,36,0.06), transparent 60%)`,
+        background: `radial-gradient(600px circle at var(--cx) var(--cy), rgba(16, 185, 129,0.08), transparent 60%)`,
         ["--cx"]: sx,
         ["--cy"]: sy,
       }}
@@ -216,6 +216,72 @@ export function SpotlightCard({
     >
       {children}
     </Tag>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Tilt3D — perspective tilt toward the cursor (CSS 3D, no deps)      */
+/* ------------------------------------------------------------------ */
+export function Tilt3D({
+  children,
+  className = "",
+  max = 8,
+  scale = 1.02,
+  glare = true,
+}) {
+  const reduce = useReducedMotion();
+  const ref = useRef(null);
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const srx = useSpring(rx, { stiffness: 150, damping: 18 });
+  const sry = useSpring(ry, { stiffness: 150, damping: 18 });
+
+  if (reduce) return <div className={className}>{children}</div>;
+
+  const onMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    ry.set((px - 0.5) * (max * 2));
+    rx.set(-(py - 0.5) * (max * 2));
+    el.style.setProperty("--gx", `${px * 100}%`);
+    el.style.setProperty("--gy", `${py * 100}%`);
+  };
+
+  const reset = () => {
+    rx.set(0);
+    ry.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{
+        rotateX: srx,
+        rotateY: sry,
+        transformPerspective: 900,
+        transformStyle: "preserve-3d",
+      }}
+      whileHover={{ scale }}
+      transition={{ scale: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+      className={`group/tilt3d relative ${className}`}
+    >
+      {children}
+      {glare && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover/tilt3d:opacity-100"
+          style={{
+            background:
+              "radial-gradient(600px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.08), transparent 45%)",
+          }}
+        />
+      )}
+    </motion.div>
   );
 }
 

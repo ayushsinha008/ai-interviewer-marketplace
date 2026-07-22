@@ -4,7 +4,7 @@ export const GrayTitle = ({ children }) => (
   </span>
 );
 export const GoldTitle = ({ children }) => (
-  <span className="bg-gradient-to-br from-amber-300 via-amber-400 to-amber-600 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-br from-emerald-100 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
     {children}
   </span>
 );

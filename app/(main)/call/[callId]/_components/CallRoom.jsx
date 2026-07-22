@@ -78,7 +78,7 @@ export default function CallRoom({
     return (
       <div className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden bg-[#0a0a0b]">
         <div className="aurora opacity-60" aria-hidden />
-        <span className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-400/10 shadow-[0_0_50px_-10px_rgba(251,191,36,0.5)]">
+        <span className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-400/10 shadow-[0_0_50px_-10px_rgba(16, 185, 129,0.55)]">
           <Loader2 size={28} className="animate-spin text-amber-400" />
         </span>
         <p className="relative text-sm font-light text-stone-400">

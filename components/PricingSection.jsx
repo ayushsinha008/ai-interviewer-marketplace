@@ -33,13 +33,13 @@ export default function PricingSection() {
             key={plan.name}
             className={`lift relative flex h-full flex-col rounded-2xl p-10 backdrop-blur-sm transition-colors duration-300 ${
               plan.featured
-                ? "gradient-border border border-amber-400/20 bg-[#141417]/90 shadow-[0_0_60px_-24px_rgba(251,191,36,0.5)]"
+                ? "gradient-border border border-amber-400/20 bg-[#141417]/90 shadow-[0_0_60px_-24px_rgba(16, 185, 129,0.55)]"
                 : "border border-white/10 bg-[#0f0f11]/80 hover:border-amber-400/15"
             } ${isActive ? "ring-1 ring-amber-400/30" : ""}`}
           >
             {/* Most Popular badge */}
             {plan.featured && !isActive && (
-              <span className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-b from-amber-300 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wide text-[#0a0a0b] shadow-[0_6px_20px_-6px_rgba(251,191,36,0.6)]">
+              <span className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 px-3.5 py-1 text-xs font-bold uppercase tracking-wide text-white shadow-[0_6px_20px_-6px_rgba(16, 185, 129,0.7)]">
                 Most Popular
               </span>
             )}

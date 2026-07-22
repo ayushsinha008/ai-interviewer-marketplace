@@ -56,7 +56,7 @@ export default function ExploreGrid({ interviewers }) {
                 onClick={() => setActiveCategory(cat.value)}
                 className={`cursor-pointer rounded-lg border px-4 py-2 text-xs font-medium transition-all duration-200 ${
                   active
-                    ? "border-amber-400/40 bg-amber-400/10 text-amber-300 shadow-[0_0_16px_-6px_rgba(251,191,36,0.4)]"
+                    ? "border-amber-400/40 bg-amber-400/10 text-amber-300 shadow-[0_0_16px_-6px_rgba(16, 185, 129,0.45)]"
                     : "border-white/10 text-stone-500 hover:border-white/20 hover:text-stone-300"
                 }`}
               >

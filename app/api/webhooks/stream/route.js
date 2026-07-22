@@ -147,11 +147,11 @@ export async function POST(request) {
 
       // 3. Generate feedback via Gemini
       console.log(
-        `[stream-webhook] Sending transcript to Gemini (gemini-2.5-flash-lite)...`
+        `[stream-webhook] Sending transcript to Gemini (gemini-flash-latest)...`
       );
       const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash-lite",
+        model: "gemini-flash-latest",
       });
       const categories =
         booking.interviewer.categories?.join(", ") ?? "General";

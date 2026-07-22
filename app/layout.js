@@ -44,9 +44,9 @@ export default function RootLayout({ children }) {
       appearance={{
         theme: dark,
         variables: {
-          colorPrimary: "#fbbf24",
+          colorPrimary: "#10b981",
           colorBackground: "#0a0a0b",
-          colorText: "#f5f5f4",
+          colorText: "#f4f4f5",
           colorInputBackground: "#141417",
           borderRadius: "0.9rem",
         },

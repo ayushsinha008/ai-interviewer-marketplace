@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost:
           "text-stone-300 hover:bg-white/8 hover:text-white dark:hover:bg-white/8",
         link: "text-amber-300 underline-offset-4 hover:text-amber-200 hover:underline",
-        gold: "relative overflow-hidden bg-gradient-to-b from-amber-300 to-amber-500 text-[#0a0a0b] font-semibold shadow-[0_8px_28px_-8px_rgba(251,191,36,0.5)] hover:from-amber-200 hover:to-amber-400 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-8px_rgba(251,191,36,0.6)] active:translate-y-0",
+        gold: "relative overflow-hidden bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600 text-white font-semibold shadow-[0_8px_28px_-8px_rgba(16, 185, 129,0.6)] hover:from-emerald-400 hover:via-emerald-500 hover:to-teal-500 hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-8px_rgba(16, 185, 129,0.7)] active:translate-y-0",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

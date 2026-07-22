@@ -150,7 +150,7 @@ export default function CallUI({
               onClick={() => setActiveTab("chat")}
               className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-medium transition-all ${
                 activeTab === "chat"
-                  ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.2)]"
+                  ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(52, 211, 153,0.25)]"
                   : "text-stone-500 hover:bg-white/5 hover:text-stone-300"
               }`}
             >
@@ -165,7 +165,7 @@ export default function CallUI({
                 onClick={() => setActiveTab("ai")}
                 className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-medium transition-all ${
                   activeTab === "ai"
-                    ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.2)]"
+                    ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(52, 211, 153,0.25)]"
                     : "text-stone-500 hover:bg-white/5 hover:text-stone-300"
                 }`}
               >

@@ -14,7 +14,7 @@ export default async function MyAppointmentsPage() {
   const appointments = await getIntervieweeAppointments();
   const now = new Date();
   const scheduled = appointments.filter(
-    (a) => a.status === "SCHEDULED" && new Date(a.startTime) > now
+    (a) => a.status === "SCHEDULED" && new Date(a.endTime) > now
   );
   const past = appointments.filter(
     (a) => a.status !== "SCHEDULED" || new Date(a.endTime) <= now
@@ -34,7 +34,7 @@ export default async function MyAppointmentsPage() {
         {/* ── Empty state ── */}
         {appointments.length === 0 && (
           <div className="flex flex-col items-center justify-center gap-5 py-28 text-center">
-            <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-400/10 text-3xl shadow-[0_8px_40px_-12px_rgba(251,191,36,0.35)]">
+            <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-400/10 text-3xl shadow-[0_8px_40px_-12px_rgba(16, 185, 129,0.4)]">
               <CalendarDays size={28} className="text-amber-400" />
             </span>
             <div>

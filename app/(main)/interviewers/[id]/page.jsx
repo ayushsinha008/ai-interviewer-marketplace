@@ -46,7 +46,7 @@ export default async function InterviewerProfilePage({ params }) {
           </Link>
 
           <div className="flex items-start gap-8">
-            <Avatar className="h-24 w-24 shrink-0 rounded-2xl border-2 border-white/10 shadow-[0_8px_40px_-12px_rgba(251,191,36,0.25)]">
+            <Avatar className="h-24 w-24 shrink-0 rounded-2xl border-2 border-white/10 shadow-[0_8px_40px_-12px_rgba(16, 185, 129,0.35)]">
               <AvatarImage
                 src={interviewer.imageUrl}
                 alt={interviewer.name}

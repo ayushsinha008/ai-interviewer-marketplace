@@ -182,7 +182,7 @@ export default function SlotPicker({
                     onClick={() => handleSlotClick(slot)}
                     className={`relative text-xs px-2 py-2.5 rounded-xl border transition-all duration-200 ${
                       isSelected
-                        ? "border-amber-400/60 bg-amber-400/15 text-amber-300 shadow-[0_0_12px_rgba(251,191,36,0.08)]"
+                        ? "border-amber-400/60 bg-amber-400/15 text-amber-300 shadow-[0_0_12px_rgba(52, 211, 153,0.15)]"
                         : slot.isBooked
                         ? "border-white/5 bg-white/2 text-stone-700 cursor-not-allowed"
                         : "border-white/10 text-stone-400 hover:border-amber-400/30 hover:text-amber-400 hover:bg-amber-400/5 cursor-pointer"
@@ -208,7 +208,7 @@ export default function SlotPicker({
         {selectedSlot && (
           <div
             ref={summaryRef}
-            className="flex flex-col gap-4 rounded-2xl border border-amber-400/25 bg-[#0f0f11]/80 p-6 shadow-[0_0_40px_-16px_rgba(251,191,36,0.4)] backdrop-blur-sm"
+            className="flex flex-col gap-4 rounded-2xl border border-amber-400/25 bg-[#0f0f11]/80 p-6 shadow-[0_0_40px_-16px_rgba(16, 185, 129,0.45)] backdrop-blur-sm"
           >
             <p className="text-xs font-semibold uppercase tracking-widest text-amber-400/80">
               Your booking

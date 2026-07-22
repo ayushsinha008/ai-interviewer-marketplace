@@ -2,24 +2,22 @@ import { checkUser } from "@/lib/checkUser";
 import { Button } from "./ui/button";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import Image from "next/image";
 import RoleRedirect from "./RoleRedirect";
 import CreditButton from "./CreditButton";
-import { CalendarDays, Users } from "lucide-react";
+import { CalendarDays, Users, MessagesSquare } from "lucide-react";
 
 const Header = async () => {
   const user = await checkUser();
 
   return (
     <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/8 bg-black/60 px-3 py-3 backdrop-blur-xl supports-[backdrop-filter]:bg-black/50 sm:px-10">
-      <Link href="/" className="group flex items-center transition-opacity">
-        <Image
-          src="/logo.png"
-          alt="Prept Logo"
-          width={100}
-          height={100}
-          className="h-11 w-auto transition-transform duration-300 group-hover:scale-105"
-        />
+      <Link href="/" className="group flex items-center gap-2.5">
+        <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-[#052018] shadow-[0_6px_20px_-6px_rgba(16,185,129,0.7)] transition-transform duration-300 group-hover:scale-105">
+          <MessagesSquare size={18} strokeWidth={2.4} />
+        </span>
+        <span className="font-display text-xl font-bold tracking-tight text-stone-100">
+          Prept
+        </span>
       </Link>
 
       {user && <RoleRedirect role={user.role} />}
