@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { CATEGORIES } from "@/lib/data";
 import InterviewerCard from "./InterviewerCard";
+import { Reveal } from "@/components/premium";
 
 export default function ExploreGrid({ interviewers }) {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -33,14 +34,14 @@ export default function ExploreGrid({ interviewers }) {
         {/* Search */}
         <div className="relative max-w-sm">
           <Search
-            size={14}
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-600 pointer-events-none"
+            size={15}
+            className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-500"
           />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name, title or company…"
-            className="pl-9 bg-[#0f0f11] border-white/10 text-stone-100 placeholder:text-stone-600 text-sm"
+            className="border-white/10 bg-[#0f0f11]/80 pl-9 text-sm text-stone-100 backdrop-blur-sm placeholder:text-stone-600 focus-visible:border-amber-400/40 focus-visible:ring-amber-400/20"
           />
         </div>
 
@@ -53,10 +54,10 @@ export default function ExploreGrid({ interviewers }) {
                 key={String(cat.value)}
                 type="button"
                 onClick={() => setActiveCategory(cat.value)}
-                className={`cursor-pointer text-xs px-4 py-2 rounded-lg border transition-all duration-200 ${
+                className={`cursor-pointer rounded-lg border px-4 py-2 text-xs font-medium transition-all duration-200 ${
                   active
-                    ? "border-amber-400/40 bg-amber-400/10 text-amber-400"
-                    : "border-white/10 text-stone-500 hover:border-white/20 hover:text-stone-400"
+                    ? "border-amber-400/40 bg-amber-400/10 text-amber-300 shadow-[0_0_16px_-6px_rgba(251,191,36,0.4)]"
+                    : "border-white/10 text-stone-500 hover:border-white/20 hover:text-stone-300"
                 }`}
               >
                 {cat.label}
@@ -93,9 +94,11 @@ export default function ExploreGrid({ interviewers }) {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map((interviewer) => (
-            <InterviewerCard key={interviewer.id} interviewer={interviewer} />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((interviewer, i) => (
+            <Reveal key={interviewer.id} delay={Math.min(i * 0.05, 0.4)}>
+              <InterviewerCard interviewer={interviewer} />
+            </Reveal>
           ))}
         </div>
       )}

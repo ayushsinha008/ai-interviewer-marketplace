@@ -51,10 +51,10 @@ export function AppointmentCard({ booking, mode, isPast = false }) {
         }
       />
 
-      <article className="group relative bg-[#0f0f11] border border-white/10 transition-all duration-300 hover:-translate-y-0.5 rounded-2xl bg-linear-to-t from-transparent via-transparent to-amber-300/10 p-7 flex flex-col gap-6 self-start">
+      <article className="spotlight-card lift group relative flex flex-col gap-6 self-start rounded-2xl border border-white/10 bg-[#0f0f11]/80 bg-gradient-to-t from-transparent via-transparent to-amber-300/[0.07] p-7 backdrop-blur-sm transition-colors duration-300 hover:border-amber-400/25">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-4 min-w-0">
-            <Avatar className="w-14 h-14 border border-white/10 rounded-2xl shrink-0">
+          <div className="flex min-w-0 items-center gap-4">
+            <Avatar className="h-14 w-14 shrink-0 rounded-2xl border border-white/10 ring-2 ring-amber-400/0 transition-all duration-300 group-hover:ring-amber-400/20">
               <AvatarImage
                 src={person?.imageUrl}
                 alt={person?.name}
@@ -66,7 +66,7 @@ export function AppointmentCard({ booking, mode, isPast = false }) {
             </Avatar>
 
             <div className="flex flex-col gap-1 min-w-0">
-              <p className="text-base font-medium text-stone-200 leading-tight truncate">
+              <p className="truncate font-display text-base font-semibold leading-tight text-stone-100">
                 {person?.name ?? "—"}
               </p>
               {person?.title && person?.company ? (

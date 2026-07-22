@@ -4,6 +4,7 @@ import { db } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import PayoutReviewClient from "./_components/PayoutReviewClient";
 import { GoldTitle, GrayTitle, SectionLabel } from "@/components/reusables";
+import { StarsBackgroundDemo } from "@/components/demo-components-backgrounds-stars";
 
 export default async function PayoutReviewPage({ params }) {
   const { id } = await params;
@@ -18,11 +19,14 @@ export default async function PayoutReviewPage({ params }) {
   if (!payout) notFound();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0b] text-stone-100 antialiased px-6 flex items-center justify-center">
-      <div className="w-full max-w-sm flex flex-col gap-6">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0b] px-6 text-stone-100 antialiased">
+      <StarsBackgroundDemo />
+      <div className="aurora opacity-60" aria-hidden />
+
+      <div className="relative z-10 flex w-full max-w-sm flex-col gap-6">
         <div className="text-center">
           <SectionLabel>Admin</SectionLabel>
-          <h1 className="font-serif text-4xl tracking-tighter mt-1">
+          <h1 className="mt-1 font-display text-4xl font-semibold tracking-tighter">
             <GrayTitle>Review </GrayTitle>
             <GoldTitle>Withdrawal</GoldTitle>
           </h1>

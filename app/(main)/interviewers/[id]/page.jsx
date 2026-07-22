@@ -33,10 +33,11 @@ export default async function InterviewerProfilePage({ params }) {
   return (
     <main className="min-h-screen bg-black">
       {/* ── Hero identity banner ── */}
-      <section className="relative border-b border-white/8 overflow-hidden">
+      <section className="relative overflow-hidden border-b border-white/8">
         <StarsBackgroundDemo />
+        <div className="aurora opacity-70" aria-hidden />
 
-        <div className="relative max-w-6xl mx-auto px-8 pt-20 pb-14 flex flex-col gap-8">
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-8 pb-14 pt-24">
           <Link href="/explore">
             <Button variant="link" className="text-stone-500 cursor-pointer">
               <ArrowLeft size={13} />
@@ -45,18 +46,18 @@ export default async function InterviewerProfilePage({ params }) {
           </Link>
 
           <div className="flex items-start gap-8">
-            <Avatar className="w-24 h-24 border-2 border-white/10 shrink-0 rounded-2xl">
+            <Avatar className="h-24 w-24 shrink-0 rounded-2xl border-2 border-white/10 shadow-[0_8px_40px_-12px_rgba(251,191,36,0.25)]">
               <AvatarImage
                 src={interviewer.imageUrl}
                 alt={interviewer.name}
                 className="rounded-2xl"
               />
-              <AvatarFallback className="rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 text-3xl font-medium">
+              <AvatarFallback className="rounded-2xl border border-amber-400/20 bg-amber-400/10 text-3xl font-medium text-amber-400">
                 {interviewer.name?.[0] ?? "?"}
               </AvatarFallback>
             </Avatar>
-            <div className="flex flex-col gap-3 min-w-0 pt-1">
-              <h1 className="font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-tight">
+            <div className="flex min-w-0 flex-col gap-3 pt-1">
+              <h1 className="font-display text-[clamp(2rem,4vw,3rem)] font-semibold leading-[1.05] tracking-tight">
                 <GrayTitle>{interviewer.name}</GrayTitle>
               </h1>
 
@@ -102,7 +103,7 @@ export default async function InterviewerProfilePage({ params }) {
         {/* ── LEFT ── */}
         <div className="lg:col-span-3 flex flex-col gap-6 order-2 lg:-order-1">
           {interviewer.bio && (
-            <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-5">
+            <div className="spotlight-card flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
               <SectionLabel>About</SectionLabel>
               <p className="text-base text-stone-300 font-light leading-relaxed">
                 {interviewer.bio}
@@ -111,7 +112,7 @@ export default async function InterviewerProfilePage({ params }) {
           )}
 
           {interviewer.categories?.length > 0 && (
-            <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-5">
+            <div className="spotlight-card flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
               <div>
                 <SectionLabel>Specialties</SectionLabel>
                 <p className="text-sm text-stone-500 font-light mt-1">
@@ -131,7 +132,7 @@ export default async function InterviewerProfilePage({ params }) {
             </div>
           )}
 
-          <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-6">
+          <div className="spotlight-card flex flex-col gap-6 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
             <div>
               <SectionLabel>What to expect</SectionLabel>
               <p className="text-sm text-stone-500 font-light mt-1">

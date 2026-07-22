@@ -76,9 +76,14 @@ export default function CallRoom({
 
   if (!videoClient || !call) {
     return (
-      <div className="min-h-screen bg-[#0a0a0b] flex flex-col items-center justify-center gap-3">
-        <Loader2 size={28} className="text-amber-400 animate-spin" />
-        <p className="text-stone-500 text-sm font-light">Connecting to call…</p>
+      <div className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden bg-[#0a0a0b]">
+        <div className="aurora opacity-60" aria-hidden />
+        <span className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-amber-400/20 bg-amber-400/10 shadow-[0_0_50px_-10px_rgba(251,191,36,0.5)]">
+          <Loader2 size={28} className="animate-spin text-amber-400" />
+        </span>
+        <p className="relative text-sm font-light text-stone-400">
+          Connecting to call…
+        </p>
       </div>
     );
   }

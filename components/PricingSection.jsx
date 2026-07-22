@@ -5,6 +5,7 @@ import { CheckoutButton } from "@clerk/nextjs/experimental";
 import { SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { PLANS } from "@/lib/data";
+import { SpotlightCard } from "@/components/premium";
 
 export default function PricingSection() {
   const { has, userId } = useAuth();
@@ -23,36 +24,36 @@ export default function PricingSection() {
     : null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div className="grid grid-cols-1 gap-5 pt-4 md:grid-cols-3">
       {PLANS.map((plan) => {
         const isActive = activePlanSlug === plan.slug;
 
         return (
-          <div
+          <SpotlightCard
             key={plan.name}
-            className={`relative rounded-2xl p-10 h-full flex flex-col transition-all duration-300 hover:-translate-y-1 ${
+            className={`lift relative flex h-full flex-col rounded-2xl p-10 backdrop-blur-sm transition-colors duration-300 ${
               plan.featured
-                ? "bg-[#141417] border border-amber-400/20"
-                : "bg-[#0f0f11] border border-white/10 hover:border-amber-400/10"
+                ? "gradient-border border border-amber-400/20 bg-[#141417]/90 shadow-[0_0_60px_-24px_rgba(251,191,36,0.5)]"
+                : "border border-white/10 bg-[#0f0f11]/80 hover:border-amber-400/15"
             } ${isActive ? "ring-1 ring-amber-400/30" : ""}`}
           >
             {/* Most Popular badge */}
             {plan.featured && !isActive && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-[#0a0a0b] text-xs font-bold tracking-wide uppercase px-3.5 py-1 rounded-full whitespace-nowrap">
+              <span className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-b from-amber-300 to-amber-500 px-3.5 py-1 text-xs font-bold uppercase tracking-wide text-[#0a0a0b] shadow-[0_6px_20px_-6px_rgba(251,191,36,0.6)]">
                 Most Popular
               </span>
             )}
 
-            <p className="text-xs font-semibold text-stone-500 tracking-widest uppercase mb-5">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-stone-500">
               {plan.name}
             </p>
 
-            <div className="flex items-end gap-1 mb-1.5">
+            <div className="mb-1.5 flex items-end gap-1">
               <span
-                className={`font-serif text-5xl leading-none tracking-tight ${
+                className={`font-display text-5xl font-bold leading-none tracking-tight ${
                   plan.featured
-                    ? "bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent"
-                    : "bg-linear-to-br from-stone-100 to-stone-400 bg-clip-text text-transparent"
+                    ? "text-gradient-gold"
+                    : "bg-gradient-to-br from-stone-100 to-stone-400 bg-clip-text text-transparent"
                 }`}
               >
                 {plan.price}
@@ -141,7 +142,7 @@ export default function PricingSection() {
                 </Button>
               </SignInButton>
             )}
-          </div>
+          </SpotlightCard>
         );
       })}
     </div>

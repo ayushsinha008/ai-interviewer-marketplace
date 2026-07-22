@@ -13,12 +13,12 @@ import { AlertCircle } from "lucide-react";
 export default function UpgradeModal({ open, onOpenChange, reason }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border-amber-200/10 min-w-[70vw] max-h-[90vh] overflow-y-scroll">
+      <DialogContent className="max-h-[90vh] min-w-[70vw] overflow-y-auto border-amber-200/10 pt-8">
         <DialogHeader>
           <div className="flex items-start gap-2 mb-2">
             <AlertCircle className="text-amber-400 ml-2 mt-1" />
             <div>
-              <DialogTitle className="font-serif text-2xl">
+              <DialogTitle className="font-display text-2xl font-semibold">
                 Upgrade your plan
               </DialogTitle>
               {reason && (
@@ -31,7 +31,7 @@ export default function UpgradeModal({ open, onOpenChange, reason }) {
         </DialogHeader>
 
         {/* PricingSection or any children slot in here */}
-        <div className="px-2 pb-6">
+        <div className="overflow-visible px-2 pb-6 pt-2">
           <PricingSection />
         </div>
       </DialogContent>

@@ -96,29 +96,34 @@ export default function CallUI({
 
   if (callingState === CallingState.LEFT) {
     return (
-      <div className="min-h-screen bg-[#0a0a0b] flex flex-col items-center justify-center gap-3">
-        <p className="text-stone-400 text-sm">Leaving call…</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-[#0a0a0b]">
+        <Loader2 size={20} className="animate-spin text-amber-400" />
+        <p className="text-sm text-stone-400">Leaving call…</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-[92vh] bg-[#0a0a0b] flex flex-col overflow-hidden">
+    <div className="flex min-h-[92vh] flex-col overflow-hidden bg-[#0a0a0b]">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-6 py-3 border-b border-white/8 shrink-0">
+      <div className="flex shrink-0 items-center justify-between border-b border-white/8 bg-black/40 px-6 py-3 backdrop-blur-xl">
         <div className="flex items-center gap-2">
+          <span className="flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/10 px-3 py-1 text-xs font-medium text-red-400">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
+            LIVE
+          </span>
           <Badge
             variant="outline"
-            className="border-white/10 text-stone-500 text-xs"
+            className="border-white/10 text-xs text-stone-400"
           >
             {booking.interviewer.name}
-            <span className="text-stone-700 mx-1.5">×</span>
+            <span className="mx-1.5 text-stone-700">×</span>
             {booking.interviewee.name}
           </Badge>
           {isInterviewer && (
             <Badge
               variant="outline"
-              className="border-amber-400/20 bg-amber-400/5 text-amber-400 text-xs"
+              className="border-amber-400/25 bg-amber-400/10 text-xs text-amber-300"
             >
               Interviewer
             </Badge>
@@ -127,9 +132,9 @@ export default function CallUI({
       </div>
 
       {/* Body: video + side panel */}
-      <div className="flex flex-1 min-h-0">
+      <div className="flex min-h-0 flex-1">
         {/* ── LEFT: Video ── */}
-        <div className="flex flex-col flex-1 min-w-0">
+        <div className="flex min-w-0 flex-1 flex-col">
           <StreamTheme>
             <SpeakerLayout participantBarPosition="bottom" />
             <CallControls onLeave={handleLeave} />
@@ -137,16 +142,16 @@ export default function CallUI({
         </div>
 
         {/* ── RIGHT: Chat / AI panel ── */}
-        <div className="w-85 shrink-0 flex flex-col border-l border-white/8 bg-[#0a0a0b]">
+        <div className="flex w-85 shrink-0 flex-col border-l border-white/8 bg-[#0a0a0b]/95 backdrop-blur-xl">
           {/* Tab switcher */}
-          <div className="flex border-b border-white/8 shrink-0">
+          <div className="flex shrink-0 gap-1 border-b border-white/8 p-2">
             <button
               type="button"
               onClick={() => setActiveTab("chat")}
-              className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${
+              className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-medium transition-all ${
                 activeTab === "chat"
-                  ? "text-amber-400 border-b-2 border-amber-400"
-                  : "text-stone-500 hover:text-stone-300"
+                  ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.2)]"
+                  : "text-stone-500 hover:bg-white/5 hover:text-stone-300"
               }`}
             >
               <MessageSquare size={13} />
@@ -158,10 +163,10 @@ export default function CallUI({
               <button
                 type="button"
                 onClick={() => setActiveTab("ai")}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-colors ${
+                className={`flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-xs font-medium transition-all ${
                   activeTab === "ai"
-                    ? "text-amber-400 border-b-2 border-amber-400"
-                    : "text-stone-500 hover:text-stone-300"
+                    ? "bg-amber-400/10 text-amber-300 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.2)]"
+                    : "text-stone-500 hover:bg-white/5 hover:text-stone-300"
                 }`}
               >
                 <Sparkles size={13} />

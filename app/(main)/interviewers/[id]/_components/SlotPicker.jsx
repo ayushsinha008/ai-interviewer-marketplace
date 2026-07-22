@@ -90,7 +90,7 @@ export default function SlotPicker({
 
   if (!availability) {
     return (
-      <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 text-center flex flex-col items-center gap-2">
+      <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 text-center backdrop-blur-sm">
         <span className="text-2xl">🕐</span>
         <p className="text-sm text-stone-500">No availability set yet.</p>
         <p className="text-xs text-stone-700">Check back later.</p>
@@ -108,22 +108,22 @@ export default function SlotPicker({
 
       <div className="flex flex-col gap-4">
         {/* ── Main picker card ── */}
-        <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-7 flex flex-col gap-6">
+        <div className="flex flex-col gap-6 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-7 backdrop-blur-sm">
           {/* Header */}
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h2 className="font-serif text-xl tracking-tight">
+              <h2 className="font-display text-xl font-semibold tracking-tight">
                 <GrayTitle>Book a session</GrayTitle>
               </h2>
-              <p className="text-xs text-stone-500 font-light mt-1">
+              <p className="mt-1 text-xs font-light text-stone-500">
                 Select a date and available time slot.
               </p>
             </div>
-            <div className="text-right shrink-0">
+            <div className="shrink-0 text-right">
               <p className="text-xs text-stone-600">Cost</p>
-              <p className="font-serif text-2xl leading-none bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent">
+              <p className="font-display text-2xl font-bold leading-none text-gradient-gold">
                 {interviewerCredits}
-                <span className="text-xs font-sans text-stone-500 ml-1">
+                <span className="ml-1 font-sans text-xs font-normal text-stone-500">
                   cr
                 </span>
               </p>
@@ -208,9 +208,9 @@ export default function SlotPicker({
         {selectedSlot && (
           <div
             ref={summaryRef}
-            className="bg-[#0f0f11] border border-amber-400/20 rounded-2xl p-6 flex flex-col gap-4"
+            className="flex flex-col gap-4 rounded-2xl border border-amber-400/25 bg-[#0f0f11]/80 p-6 shadow-[0_0_40px_-16px_rgba(251,191,36,0.4)] backdrop-blur-sm"
           >
-            <p className="text-xs font-semibold text-stone-500 tracking-widest uppercase">
+            <p className="text-xs font-semibold uppercase tracking-widest text-amber-400/80">
               Your booking
             </p>
 
@@ -240,7 +240,7 @@ export default function SlotPicker({
 
             <div className="flex justify-between items-center">
               <span className="text-xs text-stone-400">Credits charged</span>
-              <span className="font-serif text-lg bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent leading-none">
+              <span className="font-display text-lg font-bold leading-none text-gradient-gold">
                 −{interviewerCredits}
               </span>
             </div>

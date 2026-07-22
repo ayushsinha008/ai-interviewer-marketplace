@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label";
 import { completeOnboarding } from "@/actions/onboarding";
 import useFetch from "@/hooks/use-fetch";
 import { CATEGORIES, ONBOARDING_ROLES, YEARS_OPTIONS } from "@/lib/data";
+import { Reveal, SpotlightCard } from "@/components/premium";
+import { StarsBackgroundDemo } from "@/components/demo-components-backgrounds-stars";
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -66,44 +68,49 @@ export default function OnboardingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black px-6 py-24 flex flex-col items-center">
-      <div className="w-full max-w-2xl">
+    <main className="relative flex min-h-screen flex-col items-center overflow-hidden bg-black px-6 py-24">
+      <StarsBackgroundDemo />
+      <div className="aurora opacity-60" aria-hidden />
+
+      <div className="relative z-10 w-full max-w-2xl">
         {/* Heading */}
-        <div className="text-center mb-10">
+        <Reveal className="mb-10 text-center">
           <SectionLabel>Welcome</SectionLabel>
-          <h1 className="font-serif text-5xl leading-tight tracking-tighter mt-1">
+          <h1 className="mt-1 font-display text-4xl font-semibold leading-tight tracking-tighter sm:text-5xl">
             <GrayTitle>How will you be</GrayTitle>
             <br />
             <GoldTitle>using Prept?</GoldTitle>
           </h1>
-          <p className="text-sm text-stone-500 font-light mt-4 leading-relaxed">
+          <p className="mt-4 text-sm font-light leading-relaxed text-stone-500">
             This helps us personalise your experience.
             <span className="text-stone-600">
               {" "}
               You can&apos;t change this later.
             </span>
           </p>
-        </div>
+        </Reveal>
 
         {!role && (
-          <div className="grid grid-cols-2 gap-4 w-full">
-            {ONBOARDING_ROLES.map((r) => (
-              <button
-                key={r.value}
-                type="button"
-                onClick={() => setRole(r.value)}
-                className="text-left rounded-2xl p-8 border border-white/10 bg-[#0f0f11] hover:border-amber-400/20 hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <span className="w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xl mb-5">
-                  {r.icon}
-                </span>
-                <h3 className="font-serif text-xl tracking-tight mb-3 text-stone-100">
-                  {r.title}
-                </h3>
-                <p className="text-sm text-stone-400 font-light leading-relaxed">
-                  {r.desc}
-                </p>
-              </button>
+          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
+            {ONBOARDING_ROLES.map((r, i) => (
+              <Reveal key={r.value} delay={i * 0.08}>
+                <SpotlightCard
+                  as="button"
+                  type="button"
+                  onClick={() => setRole(r.value)}
+                  className="lift h-full w-full rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 text-left backdrop-blur-sm transition-colors duration-300 hover:border-amber-400/25"
+                >
+                  <span className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10 text-xl">
+                    {r.icon}
+                  </span>
+                  <h3 className="mb-3 font-display text-xl font-semibold tracking-tight text-stone-100">
+                    {r.title}
+                  </h3>
+                  <p className="text-sm font-light leading-relaxed text-stone-400">
+                    {r.desc}
+                  </p>
+                </SpotlightCard>
+              </Reveal>
             ))}
           </div>
         )}
@@ -111,7 +118,7 @@ export default function OnboardingPage() {
         {role && (
           <div className="flex flex-col gap-6">
             {/* role strip */}
-            <div className="flex items-center justify-between bg-[#0f0f11] border border-white/10 rounded-2xl px-6 py-4">
+            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#0f0f11]/80 px-6 py-4 backdrop-blur-sm">
               <div className="flex items-center gap-3">
                 <span className="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-base shrink-0">
                   {ONBOARDING_ROLES.find((r) => r.value === role)?.icon}
@@ -130,7 +137,7 @@ export default function OnboardingPage() {
 
             {/* interviewer form */}
             {role === "INTERVIEWER" && (
-              <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-6">
+              <div className="flex flex-col gap-6 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
                 {/* Title + Company */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">

@@ -22,7 +22,22 @@ export default function AIQuestionsPanel({ categories }) {
   const questions = data?.questions ?? [];
 
   return (
-    <div className="flex flex-col gap-4 h-full overflow-hidden">
+    <div className="flex h-full flex-col gap-4 overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center gap-2">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-amber-400/20 bg-amber-400/10">
+          <Sparkles size={14} className="text-amber-400" />
+        </span>
+        <div>
+          <p className="font-display text-sm font-semibold text-stone-100">
+            AI Co-pilot
+          </p>
+          <p className="text-[10px] uppercase tracking-widest text-stone-600">
+            Live question generator
+          </p>
+        </div>
+      </div>
+
       {/* Category selector */}
       <div className="flex flex-wrap gap-1.5">
         {categories?.map((cat) => (
@@ -71,10 +86,11 @@ export default function AIQuestionsPanel({ categories }) {
           {questions.map((q, i) => (
             <div
               key={i}
-              className="rounded-xl border border-white/8 bg-[#141417] p-4 flex flex-col gap-2"
+              className="flex flex-col gap-2 rounded-xl border border-white/8 bg-[#141417] p-4 transition-colors duration-200 hover:border-amber-400/20"
             >
-              <p className="text-sm text-stone-200 font-medium leading-snug">
-                {i + 1}. {q.question}
+              <p className="text-sm font-medium leading-snug text-stone-200">
+                <span className="mr-1 text-amber-400/70">{i + 1}.</span>
+                {q.question}
               </p>
               <div className="h-px bg-white/5" />
               <p className="text-xs text-stone-500 font-light leading-relaxed">

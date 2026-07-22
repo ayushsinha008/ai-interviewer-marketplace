@@ -22,12 +22,14 @@ export default function PayoutReviewClient({ payout }) {
 
   if (done) {
     return (
-      <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-10 flex flex-col items-center gap-3 text-center">
-        <span className="text-3xl">✅</span>
-        <p className="font-serif text-xl">
+      <div className="flex flex-col items-center gap-3 rounded-2xl border border-green-500/20 bg-[#0f0f11]/80 p-10 text-center backdrop-blur-sm shadow-[0_0_50px_-20px_rgba(34,197,94,0.5)]">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-green-500/20 bg-green-500/10 text-2xl">
+          ✓
+        </span>
+        <p className="font-display text-xl font-semibold">
           <GrayTitle>Withdrawal approved</GrayTitle>
         </p>
-        <p className="text-xs text-stone-500 font-light">
+        <p className="text-xs font-light text-stone-500">
           {payout.interviewerName} · ${payout.netAmount.toFixed(2)} via{" "}
           {payout.paymentMethod}
         </p>
@@ -36,7 +38,7 @@ export default function PayoutReviewClient({ payout }) {
   }
 
   return (
-    <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-5">
+    <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
       {/* Payout summary */}
       <div className="rounded-xl bg-[#141417] border border-white/8 p-4 flex flex-col gap-2">
         <div className="flex justify-between text-xs">
@@ -60,7 +62,7 @@ export default function PayoutReviewClient({ payout }) {
         <Separator className="bg-white/8 my-1" />
         <div className="flex justify-between text-sm font-medium">
           <span className="text-stone-300">Pay out</span>
-          <span className="font-serif text-lg bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent leading-none">
+          <span className="font-display text-lg font-bold leading-none text-gradient-gold">
             ${payout.netAmount.toFixed(2)}
           </span>
         </div>

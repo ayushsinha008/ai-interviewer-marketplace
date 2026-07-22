@@ -58,14 +58,14 @@ export default function AvailabilitySection({ initial }) {
     : null;
 
   return (
-    <section className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-7">
+    <section className="flex flex-col gap-7 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <span className="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-lg mb-4">
+          <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/10 text-lg">
             <Clock size={18} className="text-amber-400" />
           </span>
-          <h2 className="font-serif text-xl tracking-tight">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
             <GrayTitle>Daily availability window</GrayTitle>
           </h2>
           <p className="text-xs text-stone-500 font-light mt-1">

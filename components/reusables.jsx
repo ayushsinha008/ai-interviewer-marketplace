@@ -1,23 +1,22 @@
 export const GrayTitle = ({ children }) => (
-  <span className="bg-linear-to-br from-stone-100 via-stone-300 to-stone-500 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-br from-stone-100 via-stone-300 to-stone-500 bg-clip-text text-transparent">
     {children}
   </span>
 );
 export const GoldTitle = ({ children }) => (
-  <span className="bg-linear-to-br from-amber-300 via-amber-400 to-amber-600 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-br from-amber-300 via-amber-400 to-amber-600 bg-clip-text text-transparent">
     {children}
   </span>
 );
 export const SectionLabel = ({ children }) => (
-  <p className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 tracking-[0.14em] uppercase mb-4">
-    <span className="w-4 h-px bg-amber-400" />
+  <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-amber-400 mb-4">
+    <span className="h-px w-5 bg-gradient-to-r from-amber-400/0 to-amber-400" />
     {children}
+    <span className="h-px w-5 bg-gradient-to-l from-amber-400/0 to-amber-400" />
   </p>
 );
 export const SectionHeading = ({ gray, gold }) => (
-  <h2
-    className={`font-serif text-[clamp(2rem,4vw,3rem)] leading-[1.1] tracking-[-0.025em]`}
-  >
+  <h2 className="font-display font-semibold text-[clamp(2rem,4vw,3rem)] leading-[1.08] tracking-[-0.03em]">
     <GrayTitle>{gray}</GrayTitle>
     <br />
     <GoldTitle>{gold}</GoldTitle>
@@ -26,16 +25,17 @@ export const SectionHeading = ({ gray, gold }) => (
 
 export default function PageHeader({ label, gray, gold, description, right }) {
   return (
-    <div className="border-b border-white/8 px-8 py-10">
-      <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+    <div className="relative overflow-hidden border-b border-white/8">
+      <div className="aurora opacity-60" aria-hidden />
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-4 px-6 py-12 sm:flex-row sm:items-end sm:justify-between sm:px-8 sm:py-14">
         <div>
           {label && <SectionLabel>{label}</SectionLabel>}
-          <h1 className="font-serif text-5xl tracking-tight mt-1">
+          <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
             {gray && <GrayTitle>{gray} </GrayTitle>}
             {gold && <GoldTitle>{gold}</GoldTitle>}
           </h1>
           {description && (
-            <p className="text-sm text-stone-500 font-light mt-2">
+            <p className="mt-3 max-w-xl text-sm font-light leading-relaxed text-stone-400">
               {description}
             </p>
           )}

@@ -21,6 +21,7 @@ import { requestWithdrawal } from "@/actions/dashboard";
 import useFetch from "@/hooks/use-fetch";
 import { CircleCheck, TrendingUp, Wallet } from "lucide-react";
 import { formatDate } from "@/lib/helpers";
+import { AnimatedCounter } from "@/components/premium";
 
 const PAYMENT_METHODS = [
   { value: "PAYPAL", label: "PayPal", placeholder: "your@paypal.com" },
@@ -76,7 +77,7 @@ export default function EarningsSection({ stats, history }) {
   return (
     <section className="flex flex-col gap-6">
       {/* Stats row */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[
           {
             label: "Credit balance",
@@ -104,17 +105,19 @@ export default function EarningsSection({ stats, history }) {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="bg-[#0f0f11] border border-white/10 rounded-2xl p-6 flex flex-col gap-2"
+            className="spotlight-card lift flex flex-col gap-2 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-6 backdrop-blur-sm transition-colors duration-300 hover:border-white/20"
           >
-            <span className="text-lg">{stat.icon}</span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-lg">
+              {stat.icon}
+            </span>
             <p
-              className={`font-serif text-4xl leading-none tracking-tight ${
+              className={`font-display text-4xl font-bold leading-none tracking-tight ${
                 stat.gold
-                  ? "bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent"
-                  : "bg-linear-to-br from-stone-100 to-stone-400 bg-clip-text text-transparent"
+                  ? "text-gradient-gold"
+                  : "bg-gradient-to-br from-stone-100 to-stone-400 bg-clip-text text-transparent"
               }`}
             >
-              {stat.value}
+              <AnimatedCounter value={stat.value} />
             </p>
             <p className="text-xs text-stone-600">{stat.unit}</p>
 
@@ -129,9 +132,9 @@ export default function EarningsSection({ stats, history }) {
       </div>
 
       {/* Withdrawal trigger card */}
-      <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex items-center justify-between gap-4">
+      <div className="gradient-border flex flex-col items-start justify-between gap-4 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm sm:flex-row sm:items-center">
         <div>
-          <h2 className="font-serif text-xl tracking-tight">
+          <h2 className="font-display text-xl font-semibold tracking-tight">
             <GrayTitle>Withdraw earnings</GrayTitle>
           </h2>
           <p className="text-xs text-stone-500 font-light mt-1">
@@ -150,15 +153,15 @@ export default function EarningsSection({ stats, history }) {
 
       {/* Withdrawal history */}
       {history?.length > 0 && (
-        <div className="bg-[#0f0f11] border border-white/10 rounded-2xl p-8 flex flex-col gap-5">
-          <p className="text-xs font-semibold text-stone-500 tracking-widest uppercase">
+        <div className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-[#0f0f11]/80 p-8 backdrop-blur-sm">
+          <p className="text-xs font-semibold uppercase tracking-widest text-stone-500">
             Withdrawal history
           </p>
           <div className="flex flex-col gap-3">
             {history.map((p) => (
               <div
                 key={p.id}
-                className="flex items-center justify-between bg-[#141417] border border-white/8 rounded-xl px-5 py-4"
+                className="flex items-center justify-between rounded-xl border border-white/8 bg-[#141417] px-5 py-4 transition-colors duration-200 hover:border-white/15"
               >
                 <div className="flex flex-col gap-0.5">
                   <p className="text-sm text-stone-300">
@@ -192,7 +195,7 @@ export default function EarningsSection({ stats, history }) {
               <span className="w-14 h-14 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-2xl">
                 ✓
               </span>
-              <p className="font-serif text-xl">
+              <p className="font-display text-xl font-semibold">
                 <GrayTitle>Request submitted</GrayTitle>
               </p>
               <p className="text-xs text-stone-500 font-light">
@@ -202,7 +205,7 @@ export default function EarningsSection({ stats, history }) {
           ) : (
             <>
               <DialogHeader>
-                <DialogTitle className="font-serif text-xl tracking-tight">
+                <DialogTitle className="font-display text-xl font-semibold tracking-tight">
                   <GrayTitle>Request withdrawal</GrayTitle>
                 </DialogTitle>
                 <DialogDescription className="text-stone-500 text-xs font-light">

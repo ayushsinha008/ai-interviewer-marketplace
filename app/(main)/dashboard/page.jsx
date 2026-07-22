@@ -43,9 +43,11 @@ export default async function InterviewerDashboardPage() {
             : undefined
         }
         right={
-          <div>
-            <p className="text-xs text-stone-600">Credit balance</p>
-            <p className="font-serif text-3xl leading-none bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent text-right">
+          <div className="rounded-2xl border border-amber-400/20 bg-amber-400/5 px-6 py-4 text-right backdrop-blur-sm">
+            <p className="text-xs uppercase tracking-wider text-stone-500">
+              Credit balance
+            </p>
+            <p className="mt-1 font-display text-3xl font-bold leading-none text-gradient-gold">
               {stats?.creditBalance ?? 0}
             </p>
           </div>
@@ -55,15 +57,24 @@ export default async function InterviewerDashboardPage() {
       {/* Tabbed content */}
       <div className="max-w-6xl mx-auto px-8 py-10">
         <Tabs defaultValue="earnings">
-          <TabsList className="bg-[#0f0f11] border border-white/10 mb-8 w-full">
-            <TabsTrigger value="earnings" className="p-5">
+          <TabsList className="mb-8 h-auto w-full border border-white/10 bg-[#0f0f11]/80 backdrop-blur-sm">
+            <TabsTrigger
+              value="earnings"
+              className="p-5 data-[state=active]:border-amber-400/20 data-[state=active]:bg-amber-400/10 data-[state=active]:text-amber-300"
+            >
               <Wallet size={16} className="text-amber-400" /> Earnings
             </TabsTrigger>
-            <TabsTrigger value="appointments" className="p-5">
+            <TabsTrigger
+              value="appointments"
+              className="p-5 data-[state=active]:border-amber-400/20 data-[state=active]:bg-amber-400/10 data-[state=active]:text-amber-300"
+            >
               <ClipboardList size={18} className="text-amber-400" />{" "}
               Appointments
             </TabsTrigger>
-            <TabsTrigger value="availability" className="p-5">
+            <TabsTrigger
+              value="availability"
+              className="p-5 data-[state=active]:border-amber-400/20 data-[state=active]:bg-amber-400/10 data-[state=active]:text-amber-300"
+            >
               <Clock size={18} className="text-amber-400" /> Availability
             </TabsTrigger>
           </TabsList>

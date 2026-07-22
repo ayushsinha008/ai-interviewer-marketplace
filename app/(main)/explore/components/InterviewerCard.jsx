@@ -23,21 +23,21 @@ export default function InterviewerCard({ interviewer }) {
   const availability = availabilities?.[0];
 
   return (
-    <Card className="relative border border-white/10 hover:border-amber-400/20">
-      <div className="absolute inset-0 bg-linear-to-br from-amber-400/5 via-transparent to-transparent pointer-events-none" />
+    <Card className="spotlight-card lift group relative border border-white/10 bg-[#0f0f11]/80 backdrop-blur-sm transition-colors duration-300 hover:border-amber-400/25">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-amber-400/5 via-transparent to-transparent" />
 
       <CardContent className="flex flex-col gap-5">
         {/* Top row — avatar + name + years */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <Avatar className="w-11 h-11 border border-white/10 shrink-0">
+            <Avatar className="h-11 w-11 shrink-0 border border-white/10 ring-2 ring-amber-400/0 transition-all duration-300 group-hover:ring-amber-400/20">
               <AvatarImage src={imageUrl} alt={name} />
-              <AvatarFallback className="bg-amber-400/10 border border-amber-400/20 text-amber-400 text-sm font-medium">
+              <AvatarFallback className="border border-amber-400/20 bg-amber-400/10 text-sm font-medium text-amber-400">
                 {name?.[0] ?? "?"}
               </AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-sm font-medium text-stone-200 leading-tight">
+              <p className="font-display text-sm font-semibold leading-tight text-stone-100">
                 {name}
               </p>
               {title && company && (
@@ -89,9 +89,9 @@ export default function InterviewerCard({ interviewer }) {
         {/* Bottom row — credit rate + availability + CTA */}
         <div className="flex items-center justify-between gap-3">
           <div className="flex flex-col gap-1">
-            <p className="text-lg font-serif leading-none bg-linear-to-br from-amber-300 to-amber-500 bg-clip-text text-transparent">
+            <p className="font-display text-lg font-bold leading-none text-gradient-gold">
               {creditRate ?? 10}
-              <span className="text-xs text-stone-500 font-sans ml-1">
+              <span className="ml-1 font-sans text-xs font-normal text-stone-500">
                 credits / session
               </span>
             </p>

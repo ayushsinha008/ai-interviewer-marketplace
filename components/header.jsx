@@ -11,20 +11,20 @@ const Header = async () => {
   const user = await checkUser();
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-3 sm:px-10 py-3 border-b border-white/7 backdrop-blur-xl">
-      <Link href="/">
+    <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-white/8 bg-black/60 px-3 py-3 backdrop-blur-xl supports-[backdrop-filter]:bg-black/50 sm:px-10">
+      <Link href="/" className="group flex items-center transition-opacity">
         <Image
           src="/logo.png"
           alt="Prept Logo"
           width={100}
           height={100}
-          className="h-11 w-auto"
+          className="h-11 w-auto transition-transform duration-300 group-hover:scale-105"
         />
       </Link>
 
       {user && <RoleRedirect role={user.role} />}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <SignedOut>
           <SignInButton mode="modal">
             <Button variant="ghost">Sign in</Button>
@@ -67,7 +67,15 @@ const Header = async () => {
             }
           />
 
-          <UserButton />
+          <div className="ml-0.5 flex items-center rounded-full ring-1 ring-white/10">
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "h-9 w-9",
+                },
+              }}
+            />
+          </div>
         </SignedIn>
       </div>
     </nav>

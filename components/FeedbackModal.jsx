@@ -35,7 +35,7 @@ export function FeedbackModal({
         <StarsBackgroundDemo />
 
         <DialogHeader className="relative">
-          <DialogTitle className="font-serif text-2xl tracking-tight">
+          <DialogTitle className="font-display text-2xl font-semibold tracking-tight">
             <GrayTitle>AI Feedback Report</GrayTitle>
           </DialogTitle>
 
@@ -55,7 +55,7 @@ export function FeedbackModal({
               <p className="text-[10px] uppercase tracking-widest opacity-60">
                 Overall rating
               </p>
-              <p className="font-serif text-3xl">{rating.label}</p>
+              <p className="font-display text-3xl font-bold">{rating.label}</p>
             </div>
 
             <span className="text-4xl">{rating.emoji}</span>

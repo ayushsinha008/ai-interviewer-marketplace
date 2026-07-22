@@ -13,13 +13,13 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border border-white/15 bg-white/5 text-stone-200 backdrop-blur-sm hover:bg-white/10 hover:border-white/25 hover:-translate-y-0.5",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-        gold: "bg-amber-400 text-[#0a0a0b] hover:bg-amber-300 hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(251,191,36,0.35)]",
+          "text-stone-300 hover:bg-white/8 hover:text-white dark:hover:bg-white/8",
+        link: "text-amber-300 underline-offset-4 hover:text-amber-200 hover:underline",
+        gold: "relative overflow-hidden bg-gradient-to-b from-amber-300 to-amber-500 text-[#0a0a0b] font-semibold shadow-[0_8px_28px_-8px_rgba(251,191,36,0.5)] hover:from-amber-200 hover:to-amber-400 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-8px_rgba(251,191,36,0.6)] active:translate-y-0",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
